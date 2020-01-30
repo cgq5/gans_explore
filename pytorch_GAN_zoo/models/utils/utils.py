@@ -6,7 +6,6 @@ import math
 
 import torch
 
-
 def isinf(tensor):
     r"""Returns a new tensor with boolean elements representing if each element
     is `+/-INF` or not.
@@ -111,7 +110,7 @@ def parse_state_name(path):
     path = os.path.splitext(os.path.basename(path))[0]
 
     data = path.split('_')
-
+    
     if len(data) < 3:
         return None
 
@@ -160,15 +159,14 @@ def getLastCheckPoint(dir, name, scale=None, iter=None):
     pathTmpData: path to the temporary configuration (.json)
     """
     trainConfig = os.path.join(dir, name + "_train_config.json")
-
     if not os.path.isfile(trainConfig):
         return None
-
+     
     listFiles = [f for f in os.listdir(dir) if (
-        os.path.splitext(f)[1] == ".pt" and
+        os.path.splitext(f)[1] == ".pth" and # it is "pth" now!
         parse_state_name(f) is not None and
         parse_state_name(f)[0] == name)]
-
+    
     if scale is not None:
         listFiles = [f for f in listFiles if parse_state_name(f)[1] == scale]
 
@@ -183,7 +181,7 @@ def getLastCheckPoint(dir, name, scale=None, iter=None):
 
     pathModel = os.path.join(dir, listFiles[0])
     pathTmpData = os.path.splitext(pathModel)[0] + "_tmp_config.json"
-
+    print(pathTmpData)
     if not os.path.isfile(pathTmpData):
         return None
 

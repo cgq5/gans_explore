@@ -8,7 +8,7 @@ import torch
 from ..gan_visualizer import GANVisualizer
 from ..utils.utils import loadmodule, getLastCheckPoint, getVal, \
     getNameAndPackage, parse_state_name
-import ../../hubconf
+import hubconf
 
 
 def getModelName(pathConfig):
@@ -47,6 +47,8 @@ def test(parser, visualisation=None):
 
     kwargs = vars(parser.parse_known_args()[0])
     # Add the pre-trained model
+    #args = [0, 1] 
+    #models = hubconf.PGAN(pretrained=True, *args, **kwargs)
 
     name = getVal(kwargs, "name", None)
     if name is None:
@@ -60,8 +62,9 @@ def test(parser, visualisation=None):
 
     scale = getVal(kwargs, "scale", None)
     iter = getVal(kwargs, "iter", None)
-    checkPointDir = os.path.join(kwargs["dir"], name)
-    print(checkPointDir )
+    checkPointDir = kwargs["dir"]
+    #checkPointDir = os.path.join(kwargs["dir"], name)
+    #print(checkPointDir)
     checkpointData = getLastCheckPoint(checkPointDir,
                                        name,
                                        scale=scale,
