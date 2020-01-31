@@ -124,3 +124,11 @@ def DCGAN(pretrained=False, *args, **kwargs):
         state_dict = model_zoo.load_url(checkpoint, map_location='cpu')
         model.load_state_dict(state_dict)
     return model
+
+def main():
+    kwargs = vars(parser.parse_known_args()[0])
+    args = [0, 1] 
+    model = hubconf.PGAN(pretrained=True, *args, **kwargs)
+
+if __name__ == '__main__':
+    main()

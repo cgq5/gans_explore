@@ -75,12 +75,14 @@ def test(parser, visualisation=None):
             "Not checkpoint found for model " + name + " at directory " + dir)
 
     modelConfig, pathModel, _ = checkpointData
+    print("modelConfig", modelConfig)
     if scale is None:
         _, scale, _ = parse_state_name(pathModel)
 
     keysLabels = None
     with open(modelConfig, 'rb') as file:
         keysLabels = json.load(file)["attribKeysOrder"]
+        print(keysLabels)
     if keysLabels is None:
         keysLabels = {}
 

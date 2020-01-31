@@ -145,7 +145,6 @@ def parse_config_name(path):
 
     return path[:-18]
 
-
 def getLastCheckPoint(dir, name, scale=None, iter=None):
     r"""
     Get the last checkpoint of the model with name @param name detected in the
@@ -181,9 +180,11 @@ def getLastCheckPoint(dir, name, scale=None, iter=None):
 
     pathModel = os.path.join(dir, listFiles[0])
     pathTmpData = os.path.splitext(pathModel)[0] + "_tmp_config.json"
-    print(pathTmpData)
+    
+    """
     if not os.path.isfile(pathTmpData):
         return None
+    """
 
     return trainConfig, pathModel, pathTmpData
 

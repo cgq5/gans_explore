@@ -1,7 +1,7 @@
 #!/bin/bash
 
 modelName=celebaCropped
-modelType=pgan
+modelType=PGAN
 OUTPUT_DATASET=/users/gcao/Projects/gans_explore/pytorch_GAN_zoo/out_data
 SIZE_OF_THE_OUTPUT=50
 PATH_TO_CELEBA=/scratch/zhangh/gcao/gdrive/CelebA/Img
